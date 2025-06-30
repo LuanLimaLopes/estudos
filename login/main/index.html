@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/Style.css" type="text/css">
+    <link rel="stylesheet" href="/script/script.js" type="js">
+</head>
+
+<body>
+    <div class="box">
+        <form action="get" class="form">
+            <fieldset>
+                <legend><b>Login</b></legend>
+                <br>
+                <div class="input_box">
+                    <input type="text" name="email" id="email" class="input_user" required>
+                    <label for="email" class="labelinput">Email</label>
+                </div>
+
+                <br><br>
+                <div class="input_box">
+                    <input type="password" name="senha" id="senha" class="input_user" required>
+                    <label for="senha" class="labelinput">Senha</label>
+                </div>
+
+                <br><br>
+                <div class="input_box">
+                    <input type="tel" name="telefone" id="telefone" class="input_user" required>
+                    <label for="telefone" class="labelinput">Telefone</label>
+                </div>
+
+                <br>
+
+                <p>Genêro :</p>
+                <input type="radio" name="genero" id="feminino" value="feminino" required>
+                <label for="feminino">Feminino</label>
+
+                <input type="radio" name="genero" id="masculino" value="masculino" required>
+                <label for="masculino">Masculino</label>
+
+                <input type="radio" name="genero" id="Outro" value="Outro" required>
+                <label for="Outro">Outro</label>
+                <br><br>
+
+                <label for="data_nasc">Data de nascimento : </label>
+                <input type="date" name="data_nasc" id="data_nasc" required>
+                <br><br><br>
+
+                <div class="input_box">
+                    <input type="text" name="Estado" id="Estado" class="input_user" required>
+                    <label for="Estado" class="labelinput">Estado</label>
+                </div>
+
+                <br><br>
+                <div class="input_box">
+                    <input type="text" name="cidade" id="cidade" class="input_user" required>
+                    <label for="cidade" class="labelinput">Cidade</label>
+                </div>
+
+                <br><br>
+                <div class="input_box">
+                    <input type="text" name="endereco" id="endereco" class="input_user" required>
+                    <label for="endereco" class="labelinput">Endereço</label>
+                </div>
+                <br>
+                <input type="submit" name="submit" id="submit">
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>
