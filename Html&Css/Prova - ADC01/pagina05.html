@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .centralizar {
+            text-align: center;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criando um formulário</title>
+    <style>
+        .header {
+            display: flex;
+            gap: 0.4rem;
+            list-style-type: none;
+            font-style: bold;
+            font-size: 15px;
+            padding: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="header">
+        <li>Menu: </a></li>
+        <li><a href="pagina01.html">| Pagina01 </a></li>
+        <li><a href="pagina02.html">| Pagina02 </a></li>
+        <li><a href="pagina03.html">| Pagina03 </a></li>
+        <li><a href="pagina04.html">| pagina04 </a></li>
+        <li><a href="pagina05.html">| pagina05 </a></li>
+    </ul>
+    <h1>Pagina - 5 Cadastro de professor</h1>
+
+    <table border="2">
+        <th colspan="8"> entre ou Cadastre-se
+        </th>
+        <tr>
+            <td>Nome Completo</td>
+            <td><input type="text" name="txtaluno" placeholder="Informe o seu nome completo"></td>
+            <td rowspan="2">https://www.youtube.com/watch?v=9cIWcoQONfk</td>
+        </tr>
+        <tr>
+            <td>Celular</td>
+            <td>
+                <input type="text" name="txtcelular" placeholder="Informe seu numero">
+            </td>
+        </tr>
+        <tr>
+            <td>Estado Civil</td>
+            <td>
+                <input type="radio" name="rdoestadocivil" value="S" checked>Solteiro
+                <input type="radio" name="rdoestadocivil" value="C">Casado
+                <input type="radio" name="rdoestadocivil" value="D">Divorciado
+                <input type="radio" name="rdoestadocivil" value="V">Viúvo
+            <td rowspan="11"><iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/9cIWcoQONfk?si=unU3-OGlw0UoQouf" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+            </td>
+        </tr>
+        <tr>
+            <td>Data de nascimento </td>
+            <td><input type="date" name="txtdate"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" name="txtemail" placeholder="Informe o seu E-mail"></td>
+        </tr>
+        <tr>
+            <td>Nova Senha</td>
+            <td><input type="password" name="txtsenha" placeholder="Informe sua senha "></td>
+        </tr>
+        <tr>
+            <td>Confirmar senha</td>
+            <td><input type="password" name="txtsenha" placeholder="Confirme sua senha"></td>
+        </tr>
+        <tr>
+            <td>Quais linguagens você conhece</td>
+            <td><input type="checkbox" name="ckblinguagens" value="hmtl" checked>HTML
+                <input type="checkbox" name="ckblinguagens" value="css">CSS
+                <input type="checkbox" name="ckblinguagens" value="Jva">Javascript
+
+            </td>
+        <tr>
+            <td>Avalie seu conhecimento em HTML de 0 a 10 </td>
+            <td><input type="number" name="conhecimento" id="conhecimento"></td>
+        </tr>
+        <tr>
+            <td>Informe o seu nivel de conhecimento em CSS</td>
+            <td>Básico<input type="range" name="conhecimento" id="conhecimento">Avançado</td>
+        </tr>
+        <tr>
+            <td>Selecione a cor para o seu perfil</td>
+            <td><input type="color" name="clrColor" value="#ff22222"> </td>
+        </tr>
+        <tr>
+            <td>Envie sua foto</td>
+            <td><input type="file" name="file" value="selecione o arquivo"> </td>
+        </tr>
+        </tr>
+        <tr></tr>
+        <td colspan="3" style="text-align: center;">
+            <input type="button" name="btncadastrar" value="Cadastrar">
+            <input type="button" name="btnlimpar" value="Limpar">
+        </td>
+        </tr>
+
+
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: oklch(92.9% 0.013 255.508);
+}
+
+header {
+    background-color: rgba(110, 202, 110, 0.733);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-shadow: 0 1px 1px;
+}
+
+header img {
+    width: 200px;
+    vertical-align: middle;
+}
+
+.logo {
+    border-radius: 10px;
+    box-shadow: 1px 3px 10px #fff;
+}
+
+nav {
+    background-color: oklch(39.1% 0.09 240.876);
+    padding: 20px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 2px 2px #000;
+}
+
+a:hover {
+    color: green;
+    text-decoration: underline 2px;
+    transition: ease 0.1s;
+}
+
+section {
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    text-shadow: 0px 1px 2px #000;
+}
+
+.cardapio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: center;
+}
+
+.ods {
+    border: 1px solid #000;
+    padding: 10px;
+    width: 45%;
+    text-align: center;
+    text-shadow: 0px 1px 2px #000;
+}
+
+.ods img,
+video {
+    max-width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+footer {
+    background-color: oklch(27.9% 0.041 260.031);
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+form input,
+form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    text-align: center;
+}
+
+summary {
+    text-indent: 30px;
+}
+
+@media (max-width: 768px) {
+    .video {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav a {
+        display: block;
+        margin: 5px 0;
+        text-align: center;
+    }
+}
