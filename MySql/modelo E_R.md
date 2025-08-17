@@ -1,4 +1,17 @@
-# Modelo E/R
+# SQL
+- DML == data manipulation language > CRUD > insert, select, update e delete
+
+- DDL == data definition language > create, alter, drop, truncate, rename
+  
+- DCL == data control language > grant, deny, revoke
+  
+- TCL == transaction control language > commit, rollback, begin
+
+| DML | DDL |
+| --- | --- |
+| DCL | TCL |
+  
+## Modelo E/R
 - Entidade e relacionamento
 
 ## Linha / Tupla
@@ -29,3 +42,12 @@ Mae                   Filho
 - muitos para muitos (Tabela mediadora)
 exemplo: tabela tio e sobrinho tabela mediadora tioid e sobrinho id
 recebendo id da tabela tio e id da tabela sobrinho
+
+
+estados 1-n Cidades
+cidades 1-1 prefeitos
+
+empresas n-n cidades
+ 
+empresas 1-n cid_emp
+cidades 1-n cid emp
