@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício</title>
+    <style>
+        .botao {
+            border: none;
+            border-radius: 5px;
+            color: black;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .bg {
+            font-family: arial;
+        }
+
+        .verde {
+            background-color: green;
+            color: black;
+        }
+
+        .preto {
+            background-color: black;
+            color: white;
+        }
+    </style>
+
+    <script>
+        var CorAtual = 'verde';
+
+        function Alternar_cores() {
+
+            if (CorAtual == 'verde') {
+                document.body.className = 'preto';
+                CorAtual = 'preto';
+            } else {
+                document.body.className = 'verde';
+                CorAtual = 'verde';
+            }
+
+        }
+    </script>
+</head>
+
+<body class="verde">
+    <a href="https://www.unisal.br" target="_blank">UNISAL</a>
+
+    <form>
+        <input type="button" class="botao" onclick="Alternar_cores()" value="Alterar cores">
+    </form>
+
+    <div>
+        <h1>Lorem ipsun</h1>
+
+        <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque minima neque nesciunt delectus</P>
+        <P>ratione natus consectetur doloribus saepe voluptatum reprehenderit eos voluptas provident minus! Odio</P>
+        <P>rerum voluptatem blanditiis veniam totam!</P>
+    </div>
+
+    <div vw class="enabled">
+        <div vw-acess-button class="active"></div>
+        <div vw-plugin-wrapper></div>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.Vlibras.Widget('https://vlibras.gov.br/app');
+    </script>
+</body>
+
+</html>
