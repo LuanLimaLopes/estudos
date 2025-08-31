@@ -1,0 +1,16 @@
+# exemplo 1
+# input: x = 121
+# output: true
+
+# exemplo 2
+# input: x = 10
+# output: false
+
+class solution:
+    def isPalindrome(self, x: int) -> bool:
+        x = str(x)
+        return x == x[::-1]
+
+sol = solution()
+
+print(sol.isPalindrome(33))
