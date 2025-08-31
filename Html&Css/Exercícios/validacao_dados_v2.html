@@ -18,12 +18,13 @@
             <tr>
                 <td>Nome</td>
                 <td><input type="text" size=35 name="txtnome" maxlength="50" placeholder="Informe seu nome"
-                        onblur="CampoName()"></td>
+                        onblur="CampoName();"></td>
             </tr>
 
             <tr>
                 <td>CPF</td>
-                <td><input type="text" size=12 name="txtcpf" maxlength="24" placeholder="Informe seu CPF"></td>
+                <td><input type="text" size=12 name="txtcpf" maxlength="24" placeholder="Informe seu CPF"
+                        onfocus="CampoName()" onkeypress="return VerificaNumeros(event);"></td>
             </tr>
             <tr>
                 <th colspan="2"><input type="submit" value="Cadastrar" onfocus="LengthName()"></th>
@@ -53,9 +54,15 @@
 
     function VerificaNumeros(caracter) {
         // Verificação de caracteres
-        var tecla = avent.keyCode; //Edge e Google
+        var tecla = event.keyCode; //Edge e Google
         tecla = caracter.which; // FireFox
-
+        // ASCII 
+        if ((tecla < 48) || (tecla > 57)) {
+            alert("Caractere invalido! Digite somente números.");
+            return false;
+        } else {
+            return true;
+        }
     }
 </script>
 
