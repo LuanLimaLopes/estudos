@@ -1,0 +1,13 @@
+# Extensões
+*.log
+*.tmp
+*.exe
+*.zip
+#Python
+.venv/
+*.pyc
+*.pyd
+*.pyo
+__pycache__/
+#IDEs
+.vscode/
