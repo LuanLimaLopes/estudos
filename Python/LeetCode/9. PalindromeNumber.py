@@ -13,4 +13,4 @@ class solution:
 
 sol = solution()
 
-print(sol.isPalindrome(33))
+print(sol.isPalindrome(101))
