@@ -5,11 +5,23 @@
 #  == Extremamente igual
 #  != Diferente
 
+def MaiorMenor(nums1, nums2):
+    if nums1 > nums2:
+        print(
+            f"Número 1: {nums1}, é maior que "
+            f"o número 2: {nums2}"
+            )
+    else:
+        print(
+            f"Número 2: {nums2}, é maior que "
+            f"o número 1: {nums1}"
+            )
+        
+result1 = int(input("Número 01: "))
+result2 = int(input("Número 02: "))
 
-nums1 = int(input("Digite o número 01: "))
-nums2 = int(input("Digite o número 02: "))
+teste = MaiorMenor(result1, result2)
 
-if nums1 != nums2:
-    print("Números diferentes!")
-else:
-    print("Números iguais")
+print(teste)
+
+
