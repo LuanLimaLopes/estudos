@@ -7,3 +7,4 @@ if isinstance(num1, int) and isinstance(num2, int):
     print("São números inteiros")
 else:
     print("Não são números inteiros")
+    
