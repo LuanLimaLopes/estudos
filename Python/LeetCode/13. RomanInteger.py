@@ -24,3 +24,4 @@ result = input("Qual o valor romano? ")
 result = sol.romanToInt(result)
 print(result)
 
+# Teste
