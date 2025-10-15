@@ -14,12 +14,14 @@ class caneta{
             echo"Estou rabiscando...";
         }
     }
-}
 
- public function tampar() {
+
+    public function tampar() {
     $this->tampada = true;
-}
+    }
 
- public function destampar() {
-    $this->tampada = false;
+        public function destampar() {
+        $this->tampada = false;
+    }
 }
+?>

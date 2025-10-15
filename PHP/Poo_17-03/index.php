@@ -8,22 +8,22 @@
 <body>
 
 <?php
-require_once'caneta.php'; //instanciar um objeto a partir da classe
+require_once'../Poo_caneta/POO.php'; //instanciar um objeto a partir da classe
 
 $c1 = new caneta; //instaciar <--
 
 $c1->cor = "Preto";  //não usar $ ao alterar atributos
 $c1->marca = "bic";
 $c1->ponta = "0.5";
-$c1->tampada();
+$c1->$tampada();
 
 print_r($c1);  //exibir os atributos do objeto c1
-echo("<br>")
+echo("<br>");
 
 $c1->rabiscar();   //Chamar função
 
 $c2 = new caneta; //criando novo objeto
-echo("<br>")
+echo("<br>");
 
 $c2->cor = "vermelho";
 $c2->ponta = "0.9";

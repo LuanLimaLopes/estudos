@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .user-info {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .user-info h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .user-info p {
+            margin: 10px 0;
+        }
+
+        .btn-logout {
+            background: #d9534f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .btn-logout:hover {
+            background: #c9302c;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="container">
+        <h2>✅ Login Realizado com Sucesso!</h2>
+
+        <div class="user-info">
+            <h3>Bem-vindo(a)!</h3>
+            <p><strong>Nome:</strong> <span id="user-nome">Carregando...</span></p>
+            <p><strong>Email:</strong> <span id="user-email">Carregando...</span></p>
+            <p><strong>ID:</strong> <span id="user-id">Carregando...</span></p>
+        </div>
+
+        <button class="btn-logout" onclick="logout()">🚪 Sair</button>
+    </section>
+
+    <script>
+        // Verificar se usuário está logado
+        const usuarioLogado = sessionStorage.getItem('usuario');
+
+        if (!usuarioLogado) {
+            // Se não estiver logado, redireciona para login
+            alert('⚠️ Você precisa fazer login primeiro!');
+            window.location.href = '../pages/pagina-login.html';
+        } else {
+            // Mostrar dados do usuário
+            const usuario = JSON.parse(usuarioLogado);
+            document.getElementById('user-nome').textContent = usuario.nome;
+            document.getElementById('user-email').textContent = usuario.email;
+            document.getElementById('user-id').textContent = usuario.id;
+
+            console.log('👤 Usuário atual:', usuario);
+        }
+
+        // Função de logout
+        function logout() {
+            sessionStorage.removeItem('usuario');
+            alert('👋 Você saiu com sucesso!');
+            window.location.href = '../pages/pagina-login.html';
+        }
+    </script>
+</body>
+
+</html>
