@@ -1,12 +1,21 @@
 <?php
-// login_sqlite.php - API para autenticar usuários com SQLite
+// server/login.php - API para autenticar usuários
 
+// Habilitar log de erros
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+ini_set('error_log', __DIR__ . '/../php_errors.log');
+date_default_timezone_set('America/Sao_Paulo');
+
+// Headers ANTES de qualquer output
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
-require_once 'config_sqlite.php';
+// Incluir configuração
+require_once __DIR__ . '/config_sqlite.php';
 
 // Verificar se é requisição POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -66,7 +75,7 @@ try {
             ]
         ]);
         
-        // Log no servidor (opcional)
+        // Log no servidor
         error_log("✅ Login bem-sucedido: {$usuario['nome']} ({$usuario['email']})");
         
     } else {
@@ -77,15 +86,17 @@ try {
             'mensagem' => 'Email ou senha incorretos.'
         ]);
         
-        // Log de tentativa falha (opcional)
+        // Log de tentativa falha
         error_log("❌ Tentativa de login falha para: $email");
     }
     
 } catch(PDOException $e) {
+    error_log("ERRO no login: " . $e->getMessage());
     http_response_code(500);
     echo json_encode([
         'sucesso' => false,
-        'mensagem' => 'Erro no servidor: ' . $e->getMessage()
+        'mensagem' => 'Erro no servidor',
+        'erro_tecnico' => $e->getMessage()
     ]);
 }
 ?>

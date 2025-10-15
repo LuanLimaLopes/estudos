@@ -1,4 +1,4 @@
-// main.js - FRONTEND para registro (conecta com PHP + SQLite)
+// js/main.js - FRONTEND para registro
 const form = document.getElementById('form-hash');
 
 // Função para gerar hash SHA-256
@@ -11,7 +11,7 @@ async function gerarHash(texto) {
     return hashHex;
 }
 
-// Só executa se o formulário existir (página de registro)
+// Só executa se o formulário existir
 if (form) {
     form.addEventListener('submit', async function (event) {
         event.preventDefault();
@@ -46,7 +46,7 @@ if (form) {
 
             console.log('🔐 Hash da senha gerado:', senhaHash);
 
-            // Envia dados para o backend PHP + SQLite
+            // Envia dados para o backend PHP (ajustado para nova estrutura)
             const response = await fetch('../server/registro.php', {
                 method: 'POST',
                 headers: {
@@ -69,7 +69,7 @@ if (form) {
 
                 // Redirecionar para login após 1 segundo
                 setTimeout(() => {
-                    window.location.href = '../pages/pagina-login.html';
+                    window.location.href = 'pagina-login.html';
                 }, 1000);
             } else {
                 alert('❌ ' + resultado.mensagem);

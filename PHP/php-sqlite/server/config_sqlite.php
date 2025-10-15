@@ -1,19 +1,27 @@
 <?php
-// config_sqlite.php - Configuração com SQLite
+// server/config_sqlite.php - Configuração com SQLite
 
-// Habilitar exibição de erros (REMOVER EM PRODUÇÃO!)
+// Habilitar log de erros
+
 error_reporting(E_ALL);
-ini_set('display_errors', 0); // Não mostrar erros no output
+ini_set('display_errors', 0);
 ini_set('log_errors', 1);
-ini_set('error_log', __DIR__ . '/php_errors.log');
+ini_set('error_log', __DIR__ . '/../php_errors.log');
+date_default_timezone_set('America/Sao_Paulo');
 
-// Nome do arquivo do banco de dados
-$db_file = __DIR__ . '../db/hash.db';
+// Caminho do banco de dados (na pasta db/)
+$db_file = __DIR__ . '/../db/hash.db';
 
 try {
+    // Verificar se a pasta db/ existe
+    $db_dir = dirname($db_file);
+    if (!is_dir($db_dir)) {
+        mkdir($db_dir, 0777, true);
+    }
+    
     // Verificar se o diretório tem permissão de escrita
-    if (!is_writable(__DIR__)) {
-        throw new Exception('Diretório não tem permissão de escrita');
+    if (!is_writable($db_dir)) {
+        throw new Exception('Pasta db/ não tem permissão de escrita');
     }
     
     // Criar/conectar ao banco SQLite
@@ -48,7 +56,7 @@ try {
         'sucesso' => false,
         'mensagem' => 'Erro na configuração do banco de dados',
         'erro_tecnico' => $e->getMessage(),
-        'arquivo' => basename(__FILE__)
+        'caminho_banco' => $db_file
     ]);
     exit;
 }

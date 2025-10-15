@@ -1,4 +1,4 @@
-// login.js - Script para página de login
+// js/login.js - Script para página de login
 const formLogin = document.getElementById('form-login');
 
 // Função para gerar hash SHA-256
@@ -30,7 +30,7 @@ formLogin.addEventListener('submit', async function (event) {
         console.log('🔐 Tentando fazer login...');
         console.log('Hash da senha:', senhaHash);
 
-        // Envia dados para o backend PHP
+        // Envia dados para o backend PHP (ajustado para nova estrutura)
         const response = await fetch('../server/login.php', {
             method: 'POST',
             headers: {
@@ -51,8 +51,8 @@ formLogin.addEventListener('submit', async function (event) {
             // Salvar dados do usuário na sessão
             sessionStorage.setItem('usuario', JSON.stringify(resultado.usuario));
 
-            // Redirecionar para página de sucesso
-            window.location.href = '../pages/dashboard.html';
+            // Redirecionar para dashboard
+            window.location.href = 'dashboard.html';
 
         } else {
             alert('❌ ' + resultado.mensagem);

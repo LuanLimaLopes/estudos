@@ -1,11 +1,12 @@
 <?php
-// registro.php - API para registrar novos usuários com SQLite
+// server/registro.php - API para registrar novos usuários
 
 // Habilitar log de erros
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
-ini_set('error_log', __DIR__ . '/php_errors.log');
+ini_set('error_log', __DIR__ . '/../php_errors.log');
+date_default_timezone_set('America/Sao_Paulo');
 
 // Headers ANTES de qualquer output
 header('Content-Type: application/json; charset=utf-8');
@@ -13,20 +14,8 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
-// Incluir configuração
-$config_file = __DIR__ . '/config_sqlite.php';
-if (!file_exists($config_file)) {
-    http_response_code(500);
-    echo json_encode([
-        'sucesso' => false,
-        'mensagem' => 'Arquivo de configuração não encontrado',
-        'arquivo_procurado' => $config_file,
-        'diretorio_atual' => __DIR__
-    ]);
-    exit;
-}
-
-require_once $config_file;
+// Incluir configuração (mesmo diretório)
+require_once __DIR__ . '/config_sqlite.php';
 
 // Verificar se é requisição POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -42,16 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $json_input = file_get_contents('php://input');
 $dados = json_decode($json_input, true);
 
-// Log do que foi recebido
-error_log("REGISTRO - Dados recebidos: " . $json_input);
-
 // Validar dados recebidos
 if (!isset($dados['usuario']) || !isset($dados['email']) || !isset($dados['senhaHash'])) {
     http_response_code(400);
     echo json_encode([
         'sucesso' => false,
-        'mensagem' => 'Dados incompletos. Envie usuario, email e senhaHash.',
-        'recebido' => array_keys($dados ?: [])
+        'mensagem' => 'Dados incompletos. Envie usuario, email e senhaHash.'
     ]);
     exit;
 }

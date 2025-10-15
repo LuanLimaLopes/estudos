@@ -16,7 +16,7 @@ class caneta{
     }
 
     function tampar() {
-        $this->tampada = true
+        $this->tampada = true;
     }
 
     function destampar(){
