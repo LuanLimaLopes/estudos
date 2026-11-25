@@ -7,7 +7,7 @@ use windows::Win32::Devices::DeviceAndDriverInstallation::{
     SetupDiDestroyDeviceInfoList, SetupDiEnumDeviceInfo, SetupDiGetClassDevsW,
     SetupDiGetDevicePropertyW, DIGCF_PRESENT, HDEVINFO, SP_DEVINFO_DATA,
 };
-use windows::Win32::Devices::Properties::DEVPROPKEY;
+use windows::Win32::Devices::Properties::{DEVPROPKEY, DEVPROPTYPE};
 
 // GUID_DEVCLASS_BLUETOOTH
 const CLASS_BLUETOOTH: GUID = GUID::from_u128(0xe0cbf06c_cd8b_4647_bb8a_263b43f0f974);
@@ -28,11 +28,19 @@ const KEY_DESC: DEVPROPKEY = DEVPROPKEY {
 };
 
 unsafe fn get_prop(set: HDEVINFO, info: &SP_DEVINFO_DATA, key: &DEVPROPKEY) -> Option<Vec<u8>> {
-    let mut ptype = 0u32;
+    let mut ptype = DEVPROPTYPE::default();
     let mut buf = vec![0u8; 512];
     let mut needed = 0u32;
-    SetupDiGetDevicePropertyW(set, info, key, &mut ptype, Some(&mut buf), Some(&mut needed), 0)
-        .ok()?;
+    SetupDiGetDevicePropertyW(
+        set,
+        info,
+        key,
+        &mut ptype,
+        Some(&mut buf),
+        Some(&mut needed),
+        0,
+    )
+    .ok()?;
     buf.truncate(needed as usize);
     Some(buf)
 }
@@ -49,15 +57,12 @@ fn utf16_to_string(bytes: &[u8]) -> String {
 pub fn read_all() -> Vec<Device> {
     let mut out: Vec<Device> = Vec::new();
     unsafe {
-        let set = match SetupDiGetClassDevsW(
-            Some(&CLASS_BLUETOOTH),
-            PCWSTR::null(),
-            None,
-            DIGCF_PRESENT,
-        ) {
-            Ok(s) => s,
-            Err(_) => return out,
-        };
+        let set =
+            match SetupDiGetClassDevsW(Some(&CLASS_BLUETOOTH), PCWSTR::null(), None, DIGCF_PRESENT)
+            {
+                Ok(s) => s,
+                Err(_) => return out,
+            };
 
         let mut index = 0u32;
         loop {
@@ -70,7 +75,9 @@ pub fn read_all() -> Vec<Device> {
             }
             index += 1;
 
-            let Some(b) = get_prop(set, &info, &KEY_BATTERY) else { continue };
+            let Some(b) = get_prop(set, &info, &KEY_BATTERY) else {
+                continue;
+            };
             let Some(&level) = b.first() else { continue };
             if level > 100 {
                 continue;
