@@ -1,11 +1,20 @@
-name: Rust Build
-on: [push, pull_request]
+name: Build Windows exe
+
+on:
+  push:
+  workflow_dispatch:
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: rust/bateria-tray
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
-      - uses: Swatinem/rust-cache@v2
-      - name: Compilar projeto
-        run: cargo build --release
+      - run: cargo build --release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bateria-tray
+          path: rust/bateria-tray/target/release/bateria-tray.exe
